@@ -1,0 +1,32 @@
+[project]
+name = "grounded-scraper"
+version = "1.0.0"
+description = "LLM extraction from web pages and PDFs that keeps only values backed by a literal quote, with an Airflow DAG"
+requires-python = ">=3.11"
+dependencies = [
+  "anthropic>=0.76,<1",
+  "beautifulsoup4>=4.12,<5",
+  "fastapi>=0.115,<1",
+  "httpx>=0.27,<1",
+  "pillow>=11,<13",
+  "pypdf>=4,<6",
+  "pytesseract>=0.3.13,<1",
+  "trafilatura>=2,<3",
+  "uvicorn[standard]>=0.30,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "--strict-markers"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]

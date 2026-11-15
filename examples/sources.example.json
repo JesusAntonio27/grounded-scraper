@@ -1,0 +1,26 @@
+{
+  "fields": [
+    {"name": "monthly_price", "kind": "number", "keywords": ["price", "month", "$"]},
+    {"name": "annual_rate", "kind": "number", "keywords": ["rate", "APR", "interest"]},
+    {"name": "plan_summary", "kind": "text", "keywords": []}
+  ],
+  "sources": [
+    {
+      "source_id": "example_pricing_page",
+      "url": "https://example.com/pricing",
+      "records": ["Starter", "Pro"],
+      "aliases": {"Pro plan": "Pro"},
+      "modes": ["text", "multimodal"],
+      "instructions": "Use the prices shown for monthly billing, not the yearly discount.",
+      "focus_terms": ["Starter", "Pro plan"],
+      "render_js": true,
+      "timeout_seconds": 120
+    },
+    {
+      "source_id": "example_fee_brochure",
+      "url": "https://example.com/docs/fees.pdf",
+      "records": ["Standard card"],
+      "instructions": "Use the weighted average annual rate, not promotional offers."
+    }
+  ]
+}
